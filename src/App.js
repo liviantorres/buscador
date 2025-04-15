@@ -21,23 +21,29 @@ function App() {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key == "Enter") {
+      SearchBook();
+    }
+  };
+
   return (
     <div className="app">
       <h1>DevReads</h1>
-   
-      <div className="inputbutton">
-  <input
-    placeholder="O que você quer ler hoje?"
-    value={query}
-    onChange={(e) => setQuery(e.target.value)}
-    type="text"
-  />
-  <button onClick={SearchBook}>
-    <IoIosSearch size={24} />
-  </button>
-</div>
 
-    
+      <div className="inputbutton">
+        <input
+          placeholder="O que você quer ler hoje?"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          type="text"
+          onKeyDown={handleKeyDown}
+        />
+        <button onClick={SearchBook}>
+          <IoIosSearch size={24} />
+        </button>
+      </div>
+
       {books.length > 0 && (
         <div className="card-container">
           {books.map((item) => (
